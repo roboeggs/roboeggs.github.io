@@ -1,11 +1,13 @@
 ---
 layout: post
-title:: How I Built a Browser-Based Sound Processing App with p5.js
+title: How I Built a Browser-Based Sound Processing App with p5.js
 date: 2026-03-11 12:26 +0300
 categories: [Projects, Intelligent Signal Processing]
 tags: [javascript, p5js, p5.sound]
 media_subpath: /assets/img/audiostudio/
 ---
+
+
 ## Audio Studio
 
 If you've ever opened a DAW and thought "could I build something like this right in the browser?" — I gave it a shot. The result is a web application where you can record audio from a microphone or upload a file, run it through a chain of effects, see the spectrum before and after processing, and save the result to a local library.
