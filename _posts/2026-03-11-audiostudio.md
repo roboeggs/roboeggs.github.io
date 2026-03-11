@@ -13,7 +13,11 @@ If you've ever opened a DAW and thought "could I build something like this right
 
 No servers, no installation — just open a page and start working with sound.
 
-{% include embed/youtube.html id='Jt0iReBF3q4' %}
+## Try It Live
+
+Test the app here: **[AudioStudio Live](https://roboeggs.github.io/AudioStudio/)**
+
+{% include embed/youtube.html id='9IfubY1AeyM' %}
 
 ---
 
@@ -92,6 +96,7 @@ Turn the Low-Pass cutoff — you immediately see the high frequencies disappear.
 ---
 
 ## Sound Library — Everything Is Saved
+![Figure 5. Sound library with saved sounds](library-panel.jpg){: .right width="290" height="160"}
 
 Any sound — recorded from the mic or uploaded from a file — can be **saved to the library** along with all current effect settings. Later you can:
 
@@ -101,7 +106,6 @@ Any sound — recorded from the mic or uploaded from a file — can be **saved t
 
 Under the hood — **localStorage + JSON**: audio is encoded in Base64, alongside sample rate and a full snapshot of every effect's parameters. No backend — everything lives in the browser and survives page reloads.
 
-![Figure 5. Sound library with saved sounds](library-panel.jpg)
 
 ---
 
