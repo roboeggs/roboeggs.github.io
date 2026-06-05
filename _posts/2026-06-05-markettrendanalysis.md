@@ -8,6 +8,12 @@ media_subpath: /assets/img/markettrendanalysis/
 ---
 
 
+> **Tip:** You can view and explore the original interactive Jupyter Notebook for this research paper on Kaggle. 
+> [![Kaggle](https://img.shields.io/badge/Kaggle-Market%20Trend%20Analysis-00BFFF?style=for-the-badge&logo=kaggle)](https://www.kaggle.com/code/roboeggs/market-trend-analysis)
+{: .prompt-tip }
+
+
+
 # Introduction
 
 I have long been interested in financial markets. Over the years, I developed a trading strategy that generates modest profits. However, I often find myself manually handling various scenarios and constantly monitoring market quotes. Since I am both studying and working, my time is extremely limited, and I lack consistency in this field. As a result, I want to analyze my strategy in greater depth.
