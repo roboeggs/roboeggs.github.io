@@ -3,7 +3,7 @@ layout: post
 title: "Market Trend Analysis: Algorithmic Support and Resistance Detection"
 date: 2026-06-05 11:29:18 +0000
 categories: [Research, Data-Science]
-tags: [python, algorithmic-trading, bitcoin, technical-analysis]
+tags: [python, algorithmic-trading, crypto, technical-analysis]
 media_subpath: /assets/img/markettrendanalysis/
 ---
 
@@ -57,13 +57,13 @@ Conversely, if the stock has repeatedly fallen to $45 but recovered each time, t
 
 To analyze, we’ll use the [TradingView](https://www.tradingview.com) platform.
 
-![BTCUSDT Resistance level](images/BTCUSDT_Resistance-Level.png)
+![BTCUSDT Resistance level](BTCUSDT_Resistance-Level.png)
 
 Why this is a resistance level: Multiple price touches confirm that this level is significant to market participants. Eventually, the level is broken with a liquidity sweep.
 
 ### Expected results 
 
-![BTCUSDT blocks](images/BTCUSDT_blocks.png)
+![BTCUSDT blocks](BTCUSDT_blocks.png)
 
 The market always moves in three blocks or waves (referred to hereafter as blocks), either up or down. It is essential to learn how to identify these correctly. This is challenging but these "three blocks" always align clearly with key levels. If the blocks fail to align with the levels, the chosen market volatility might be unsuitable.
 
@@ -71,7 +71,7 @@ Market volatility measures how frequently and sharply financial asset prices cha
 
 Another example with TONUSDT:
 
-![TONUSDT_blocks](images/TONUSDT_blocks.png)
+![TONUSDT_blocks](TONUSDT_blocks.png)
 
 This is hard to visualize without extensive experience observing market behavior and charts.
 
@@ -436,7 +436,7 @@ plt.title("BTCUSDT Candlestick Chart")
 
 Indeed, these data are consistent with the TradingView chart.
 
-![BTCUSDT_Slice](images/BTCUSDT_Slice.png)
+![BTCUSDT_Slice](BTCUSDT_Slice.png)
 
 # 3. Develop methods for identifying support and resistance levels
 
