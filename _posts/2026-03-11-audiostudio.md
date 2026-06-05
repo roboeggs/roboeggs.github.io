@@ -2,7 +2,7 @@
 layout: post
 title: How I Built a Browser-Based Sound Processing App with p5.js
 date: 2026-03-11 12:26 +0300
-categories: [Projects, Intelligent Signal Processing]
+categories: [Projects, Intelligent-Signal-Processing]
 tags: [javascript, p5js, p5.sound]
 media_subpath: /assets/img/audiostudio/
 ---
