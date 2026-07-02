@@ -35,7 +35,7 @@ My role on the project concerned the electrical and mechanical engineering of th
 - a four-microphone array for acoustic source localization;
 - a Raspberry Pi paired with an Intel Movidius neural compute stick for on-device inference.
 
-![Exploded diagram of the Smart Light station's 3D-printed body, showing the outside and inside views](light-station-diagram.jpg)
+![Exploded diagram of the Smart Light station's 3D-printed body, showing the outside and inside views](light-station-diagram.webp)
 
 ![3D-printed enclosure with the camera mounting ring and internal brackets installed](enclosure-camera-mount.jpg)
 
