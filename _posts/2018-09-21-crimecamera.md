@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Smart Light: An Embedded, Privacy-Preserving Video Surveillance Station"
-date: 2020-07-19 12:00 +0000
+date: 2018-09-21 12:00 +0000
 categories: [Projects]
 tags: [embedded-to-systems, 3d-models]
 media_subpath: /assets/img/crimecamera/
@@ -35,7 +35,7 @@ My role on the project concerned the electrical and mechanical engineering of th
 - a four-microphone array for acoustic source localization;
 - a Raspberry Pi paired with an Intel Movidius neural compute stick for on-device inference.
 
-![Exploded diagram of the Smart Light station's 3D-printed body, showing the outside and inside views](light-station-diagram.webp)
+![Exploded diagram of the Smart Light station's 3D-printed body, showing the outside and inside views](light-station-diagram.jpg)
 
 ![3D-printed enclosure with the camera mounting ring and internal brackets installed](enclosure-camera-mount.jpg)
 
@@ -58,10 +58,12 @@ At the time, several companies — NtechLab, Vocord, and VisionLabs — already 
 ![The completed Smart Light unit mounted overhead, with the LED floodlight, static light, and sensor board visible](final-mounted-unit.jpg)
 
 Video demonstration of the prototype's operation:
+
+{% include embed/youtube.html id='_4WX3q5m6u8' %}
 {% include embed/youtube.html id='ygWDG8WTIJs' %}
 
 The resulting product concept, the Crime Camera Station, was structured around a straightforward business model: clients would purchase the camera hardware and subscribe to a REST API providing video analytics services. Prospective pilot partners discussed during the project included Ak Bars Bank, the Moscow Department of Information Technologies, and an industrial chemical manufacturer.
 
 This project required integrating an unusually broad technical stack within a short timeframe — spanning embedded hardware design, mechanical fabrication, deep learning, and applied cryptography. What I recall most vividly is the constant shift between hands-on hardware work and CAD modeling, and the satisfaction of seeing all of these disparate components converge into a functioning prototype.
 
-The full pitch deck presented at Secur'IT Cup 2018 is available .
+The full pitch deck presented at Secur'IT Cup 2018 is available [here](/assets/pdf/crimecamera/CrimeCamera.pdf).
