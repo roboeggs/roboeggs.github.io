@@ -64,4 +64,4 @@ The resulting product concept, the Crime Camera Station, was structured around a
 
 This project required integrating an unusually broad technical stack within a short timeframe — spanning embedded hardware design, mechanical fabrication, deep learning, and applied cryptography. What I recall most vividly is the constant shift between hands-on hardware work and CAD modeling, and the satisfaction of seeing all of these disparate components converge into a functioning prototype.
 
-The full pitch deck presented at Secur'IT Cup 2018 is available [here](assets/pdf/crimecamera/CrimeCamera.pdf).
+The full pitch deck presented at Secur'IT Cup 2018 is available .
