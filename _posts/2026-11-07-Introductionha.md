@@ -104,7 +104,7 @@ Here is the reasoning behind each choice.
 
 **PIR HC-SR505.** It is inexpensive and predictable, with sensitivity and delay fixed by the manufacturer. It operates at 5 V, and its output is compatible with the ESP8266. That is more than sufficient for a room. If adjustment is required, the HC-SR501, with its two trim potentiometers, is a better choice.
 
-![HC-SR505 motion sensor.](move-sensor.jpg){: width="360" height="278" }
+![HC-SR505 motion sensor.](move-sensor.jpg){: width="240" height="185" }
 *Figure 3. HC-SR505 motion sensor.*
 
 
@@ -116,13 +116,13 @@ Here is the reasoning behind each choice.
 
 **A photoresistor with a 10 kΩ resistor.** This is a conventional voltage divider connected to input `A0`. The configuration's conversion factor to lux is only approximate and must be calibrated for the particular circuit; this is discussed separately in the wiring section.
 
-![GL5528 photoresistor.](photorezistor.jpg){: width="360" height="294" }
+![GL5528 photoresistor.](photorezistor.jpg){: width="240" height="196" }
 *Figure 5. GL5528 photoresistor.*
 
 
 **Relay module.** It switches the main light. Two details are important. First, relay modules may be active-HIGH or active-LOW, so the control polarity depends on the specific board. The configuration reflects this with the commented-out line `inverted: true`.
 
-![Single-channel relay module.](relay.jpg){: width="360" height="291" }
+![Single-channel relay module.](relay.jpg){: width="240" height="194" }
 *Figure 6. Single-channel relay module.*
 
 
