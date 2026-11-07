@@ -4,7 +4,7 @@ title: "A Little Bit of Magic: Local Room Automation with Home Assistant and ESP
 date: 2026-11-07 12:45 +0300
 categories: [Projects, Smart Home]
 tags: [home-assistant, esphome, esp8266, docker, iot, automation]
-media_subpath: /assets/img/introductionha/
+media_subpath: /assets/img/Introductionha/
 ---
 
 ## Table of Contents
