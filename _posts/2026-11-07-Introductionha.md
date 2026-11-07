@@ -4,7 +4,7 @@ title: "A Little Bit of Magic: Local Room Automation with Home Assistant and ESP
 date: 2026-11-07 12:45 +0300
 categories: [Projects, Smart Home]
 tags: [home-assistant, esphome, esp8266, docker, iot, automation]
-media_subpath: /assets/img/canary/
+media_subpath: /assets/img/introductionha/
 ---
 
 ## Table of Contents
@@ -164,6 +164,7 @@ The wiring is as follows:
 The divider's midpoint, between the photoresistor and the 10 kΩ resistor, is connected to `A0`. In bright conditions, the photoresistor's resistance decreases and the voltage at `A0` rises. In darkness, its resistance increases and the voltage at `A0` falls. The 10 kΩ resistor forms the lower leg of the divider and determines its measurement range: a value that is too high reduces sensitivity in darkness, while a value that is too low drives the divider toward saturation in bright conditions. A 10 kΩ resistor is a standard compromise for the GL5528 and most household applications.
 
 > **Important:** boards such as the NodeMCU and Wemos D1 Mini already include a divider on input `A0`, so applying up to 3.3 V is safe. Bare ESP8266 modules, such as the ESP-12, accept only **0–1.0 V** on their analog input. The same 3.3 V divider must not be connected directly to them; an additional divider or an external ADC such as the ADS1115 is required.
+{: .prompt-danger }
 
 ---
 
