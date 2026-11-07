@@ -20,8 +20,8 @@ media_subpath: /assets/img/Introductionha/
 - [System architecture](#system-architecture)
 - [Deploying Home Assistant and ESPHome with Docker](#deploying-home-assistant-and-esphome-with-docker)
   - [Preparing the Linux host](#preparing-the-linux-host)
-  - [`docker-compose.yml`](#docker-composeyml)
-  - [How `on_multi_click` works](#how-on_multi_click-works)
+  - [The docker-compose.yml file](#the-docker-composeyml-file)
+  - [How on\_multi\_click works](#how-on_multi_click-works)
   - [How the ESP controls the light without Home Assistant](#how-the-esp-controls-the-light-without-home-assistant)
 
 ---
@@ -93,41 +93,48 @@ The resulting list is as follows:
 Here is the reasoning behind each choice.
 
 **ESP8266 versus ESP32.** I already had a NodeMCU v2, and it is sufficient for this project: it provides Wi-Fi and enough GPIO pins. It has only one analog input, but that is sufficient for the photoresistor. I would choose an ESP32 if I planned to add more sensors, Bluetooth, or a camera. For a minimal room system, the ESP8266 is a reasonable compromise between cost and simplicity.
-![ESP32 development board.](esp32.jpg)
+
+![ESP32 development board.](esp32.jpg){: width="340" height="318" }
 *Figure 1. ESP32 development board.*
 
 **A momentary button rather than a latching switch.** A conventional switch has two states and two wires. A momentary button allows arbitrary logic to be assigned to different gestures: a short press can toggle the light, a long press can start a scenario, and a double press can switch everything off.
-![Momentary wall button.](button.jpg)
+![Momentary wall button.](button.jpg){: width="320" height="320" }
 *Figure 2. Momentary wall button.*
 
 
 **PIR HC-SR505.** It is inexpensive and predictable, with sensitivity and delay fixed by the manufacturer. It operates at 5 V, and its output is compatible with the ESP8266. That is more than sufficient for a room. If adjustment is required, the HC-SR501, with its two trim potentiometers, is a better choice.
-![HC-SR505 motion sensor.](move-sensor.jpg)
+
+![HC-SR505 motion sensor.](move-sensor.jpg){: width="360" height="278" }
 *Figure 3. HC-SR505 motion sensor.*
 
 
 **DHT11.** Its accuracy is modest—±2 °C and ±5% relative humidity—but sufficient for household automation. For higher accuracy, use a DHT22 or a more modern sensor such as the SHT31.
-![DHT22 temperature and humidity sensor.](dht22.jpg)
+
+![DHT22 temperature and humidity sensor.](dht22.jpg){:  width="320" height="320" }
 *Figure 4. DHT22 temperature and humidity sensor.*
 
 
 **A photoresistor with a 10 kΩ resistor.** This is a conventional voltage divider connected to input `A0`. The configuration's conversion factor to lux is only approximate and must be calibrated for the particular circuit; this is discussed separately in the wiring section.
-![GL5528 photoresistor.](photorezistor.jpg)
+
+![GL5528 photoresistor.](photorezistor.jpg){: width="360" height="294" }
 *Figure 5. GL5528 photoresistor.*
 
 
 **Relay module.** It switches the main light. Two details are important. First, relay modules may be active-HIGH or active-LOW, so the control polarity depends on the specific board. The configuration reflects this with the commented-out line `inverted: true`.
-![Single-channel relay module.](relay.jpg)
+
+![Single-channel relay module.](relay.jpg){: width="360" height="291" }
 *Figure 6. Single-channel relay module.*
 
 
 **MOSFET module for RGB lighting.** The microcontroller's GPIO pins are not designed to carry the strip's current. The strip therefore has a separate power supply, while the microcontroller only controls the MOSFET gates. The configuration uses three PWM channels. Check the channel order on the particular module and strip in practice, since the colors may be swapped.
-![Three-channel MOSFET module.](mostfet-board.jpg)
+
+![Three-channel MOSFET module.](mostfet-board.jpg){: width="360" height="270" }
 *Figure 7. Three-channel MOSFET module.*
 
 
 **Local server.** There is no need to purchase dedicated hardware. An old laptop or a Linux mini-PC is an ideal candidate. Home Assistant and ESPHome run in Docker, so the entire system can reside on a single device placed unobtrusively in a corner.
-![Linux mini-PC used as a local server.](mini-pc.jpg)
+
+![Linux mini-PC used as a local server.](mini-pc.jpg){: width="320" height="320" }
 *Figure 8. Linux mini-PC used as a local server.*
 
 ---
@@ -176,9 +183,15 @@ Before configuring the system, it is useful to examine how its hardware and soft
 
 **Firmware.** ESPHome builds firmware from the YAML configuration and uploads it to the microcontroller—first over USB and subsequently via OTA. The firmware establishes the Wi-Fi connection, API, and OTA update service, and also contains the local logic: the button switches the relay directly without waiting for a server response.
 
+![ESPHome device page for the Bedroom Main controller](assembled-controller.jpg)
+*Figure 11. ESPHome device page for the Bedroom Main controller, showing its controls, sensor states, related automation, and motion activity history.*
+
 **Local server.** Home Assistant and ESPHome run in Docker on one Linux machine. ESPHome builds and flashes the devices, while Home Assistant handles automation, the user interface, and history. The server is not required for basic operation: even when it is off, the button and sensors on the ESP8266 continue to follow their local rules.
 
 **Interface.** The Home Assistant web dashboard and mobile application. This is where sensor states are displayed and scenarios are configured, but the button signal does not pass through it on its way to the relay.
+
+![Home Assistant Bedroom dashboard showing light controls and sensor readings](home-assistant-dashboard.jpg)
+*Figure 12. Home Assistant Bedroom dashboard with controls for the main and RGB lights and readings from the temperature, humidity, illuminance, and motion sensors. The interface shown here may change in future releases.*
 
 Docker was chosen not as a matter of fashion, but for reproducibility. The `ghcr.io/home-assistant/home-assistant` and `ghcr.io/esphome/esphome` images are official and update predictably; reverting to an earlier version requires changing a single line in `docker-compose.yml`. All state—configuration, database, and firmware—is stored in two host volumes, so the system can be moved to another machine by copying the directories.
 
@@ -202,7 +215,7 @@ sudo usermod -aG docker \$USER
 sudo usermod -aG dialout \$USER
 ```
 
-### `docker-compose.yml`
+### The docker-compose.yml file
 
 The `docker-compose.yml` file from my project is as follows:
 
@@ -250,6 +263,9 @@ After Docker Compose starts, Home Assistant will be available at `http://<IP-add
 First, create a Home Assistant account. Then open ESPHome, create a device, select the board type (NodeMCU v2), and assign a name.
 
 The YAML editor will then open, allowing you to define the device configuration. If the pins have not been changed and the wiring follows the diagram above, the ready-made configuration below can be used. It includes all settings required for the button, motion sensor, photoresistor, DHT11, relay, and RGB strip. It is not necessary to paste the entire YAML file. Instead, consider each block, which is separated by comments, and add the blocks individually. The `api` and `wifi` sections will be device-specific, but ESPHome populates them automatically when the device is created.
+
+![ESPHome Device Builder dashboard showing the online Bedroom Main device](esphome-device-list.jpg)
+*Figure 13. ESPHome Device Builder dashboard showing the online Bedroom Main device, its YAML file, and the installed ESPHome and Device Builder versions.*
 
 ```yaml
 esphome:
@@ -367,7 +383,7 @@ sensor:
 
 After the configuration is saved, ESPHome will validate its syntax and offer to flash the device. The initial flash is performed over USB; subsequent updates can be delivered over Wi-Fi using OTA. Connect the board to a computer and select the firmware through the ESPHome interface. The Docker configuration exposes the USB device so that the firmware can be uploaded to the board. Once flashing succeeds, the device will appear in Home Assistant, where the light and RGB strip can be controlled and sensor data viewed through the web interface.
 
-### How `on_multi_click` works
+### How on_multi_click works
 
 The `on_multi_click` block is a state machine that tracks how long the button remains `ON` (pressed) and `OFF` (released). ESPHome reads these timings and compares them with the defined patterns.
 
@@ -406,7 +422,6 @@ then:
 * `OFF for at least 0.2s`: You release the button for the second time and do not press it again for 0.2 seconds. The double click is confirmed and `light.toggle: rgb_led` is executed.
 
 ESPHome evaluates the rules from top to bottom. If the input does not match the first pattern because the second press occurs before 0.3 seconds have elapsed, it proceeds to the second pattern and recognizes the double click.
-
 
 ### How the ESP controls the light without Home Assistant
 
