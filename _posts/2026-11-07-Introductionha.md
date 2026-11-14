@@ -23,6 +23,7 @@ media_subpath: /assets/img/Introductionha/
   - [The docker-compose.yml file](#the-docker-composeyml-file)
   - [How on\_multi\_click works](#how-on_multi_click-works)
   - [How the ESP controls the light without Home Assistant](#how-the-esp-controls-the-light-without-home-assistant)
+- [Demo & Conclusion](#demo--conclusion)
 
 ---
 
@@ -444,3 +445,9 @@ Where is Home Assistant at this point? Nowhere. It is not involved in this proce
 Home Assistant simply “listens” to the ESP8266 over the local network through the API. When the ESP switches the relay, it sends Home Assistant a notification: “I have just switched on Main Light.” Home Assistant updates the dashboard so that the light's current state is visible.
 
 If the server is shut down, the Internet cable is unplugged, or the Wi-Fi router is turned off, the button will still switch the light on and off. The controller does not need a network for this; it only needs power. In this arrangement, Home Assistant serves as a convenient control panel and statistics system, not as a required intermediary.
+
+## Demo & Conclusion
+
+Want to see how fast it all responds in real life? Check out this short video demonstration of the hardware response and the Home Assistant interface working together:
+
+{% include embed/youtube.html id='1JlJf_zHU4I' %}
